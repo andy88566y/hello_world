@@ -40,10 +40,35 @@ GEM
       tzinfo (~> 1.1)
     addressable (2.5.2)
       public_suffix (>= 2.0.2, < 4.0)
+    airbrussh (1.3.0)
+      sshkit (>= 1.6.1, != 1.7.0)
     arel (8.0.0)
+    ast (2.4.0)
     bindex (0.5.0)
     builder (3.2.3)
     byebug (10.0.2)
+    capistrano (3.11.0)
+      airbrussh (>= 1.0.0)
+      i18n
+      rake (>= 10.0.0)
+      sshkit (>= 1.9.0)
+    capistrano-bundler (1.3.0)
+      capistrano (~> 3.1)
+      sshkit (~> 1.2)
+    capistrano-nvm (0.0.7)
+      capistrano (~> 3.1)
+    capistrano-rails (1.4.0)
+      capistrano (~> 3.1)
+      capistrano-bundler (~> 1.1)
+    capistrano-rake (0.1.0)
+      capistrano (>= 3.0)
+    capistrano-rvm (0.1.2)
+      capistrano (~> 3.0)
+      sshkit (~> 1.2)
+    capistrano3-puma (3.1.1)
+      capistrano (~> 3.7)
+      capistrano-bundler
+      puma (~> 3.4)
     capybara (2.18.0)
       addressable
       mini_mime (>= 0.1.3)
@@ -76,6 +101,10 @@ GEM
       rb-fsevent (~> 0.9, >= 0.9.4)
       rb-inotify (~> 0.9, >= 0.9.7)
       ruby_dep (~> 1.2)
+    lol_dba (2.1.5)
+      actionpack (>= 3.0)
+      activerecord (>= 3.0)
+      railties (>= 3.0)
     loofah (2.2.2)
       crass (~> 1.0.2)
       nokogiri (>= 1.5.9)
@@ -86,12 +115,21 @@ GEM
     mini_portile2 (2.3.0)
     minitest (5.11.3)
     multi_json (1.13.1)
+    net-scp (1.2.1)
+      net-ssh (>= 2.6.5)
+    net-ssh (5.0.1)
     nio4r (2.3.1)
     nokogiri (1.8.2)
       mini_portile2 (~> 2.3.0)
+    parallel (1.12.1)
+    parser (2.5.1.0)
+      ast (~> 2.4.0)
+    powerpack (0.1.1)
     public_suffix (3.0.2)
     puma (3.11.4)
     rack (2.0.5)
+    rack-mini-profiler (1.0.0)
+      rack (>= 1.2.0)
     rack-test (1.0.0)
       rack (>= 1.0, < 3)
     rails (5.1.6)
@@ -117,10 +155,19 @@ GEM
       method_source
       rake (>= 0.8.7)
       thor (>= 0.18.1, < 2.0)
+    rainbow (3.0.0)
     rake (12.3.1)
     rb-fsevent (0.10.3)
     rb-inotify (0.9.10)
       ffi (>= 0.5.0, < 2)
+    rubocop (0.56.0)
+      parallel (~> 1.10)
+      parser (>= 2.5)
+      powerpack (~> 0.1)
+      rainbow (>= 2.2.2, < 4.0)
+      ruby-progressbar (~> 1.7)
+      unicode-display_width (~> 1.0, >= 1.0.1)
+    ruby-progressbar (1.9.0)
     ruby_dep (1.5.0)
     rubyzip (1.2.1)
     sass (3.5.6)
@@ -157,6 +204,9 @@ GEM
       activesupport (>= 4.0)
       sprockets (>= 3.0.0)
     sqlite3 (1.3.13)
+    sshkit (1.16.1)
+      net-scp (>= 1.1.2)
+      net-ssh (>= 2.8.0)
     temple (0.8.0)
     thor (0.20.0)
     thread_safe (0.3.6)
@@ -168,6 +218,7 @@ GEM
       thread_safe (~> 0.1)
     uglifier (4.1.11)
       execjs (>= 0.3.0, < 3)
+    unicode-display_width (1.3.3)
     web-console (3.6.2)
       actionview (>= 5.0)
       activemodel (>= 5.0)
@@ -184,12 +235,21 @@ PLATFORMS
 
 DEPENDENCIES
   byebug
+  capistrano-bundler
+  capistrano-nvm
+  capistrano-rails
+  capistrano-rake
+  capistrano-rvm
+  capistrano3-puma
   capybara (~> 2.13)
   coffee-rails (~> 4.2)
   jbuilder (~> 2.5)
   listen (>= 3.0.5, < 3.2)
+  lol_dba
   puma (~> 3.7)
+  rack-mini-profiler
   rails (~> 5.1.6)
+  rubocop
   sass-rails (~> 5.0)
   selenium-webdriver
   slim-rails
@@ -199,7 +259,7 @@ DEPENDENCIES
   turbolinks (~> 5)
   tzinfo-data
   uglifier (>= 1.3.0)
-  web-console (>= 3.3.0)
+  web-console
 
 BUNDLED WITH
    1.16.1
